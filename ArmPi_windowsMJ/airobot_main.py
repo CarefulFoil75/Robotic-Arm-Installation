@@ -46,7 +46,7 @@ if __name__ == '__main__':
         if img is not None:
             cv2.imshow(cc.window_name, img)
             key = cv2.waitKey(1)
-            if key == 27:
+            if key == 27: # ASCII code for 'Esc' key
                 break
     my_camera.camera_close()
     cv2.destroyAllWindows()
