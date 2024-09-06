@@ -21,6 +21,9 @@ camera_calib_path = curr_dir / 'camera_calibration'
 camera_calib_file = camera_calib_path / 'calibration_param.npz'
 
 save_path = curr_dir / 'data'
+
+dev_path = save_path / 'dev_images'
+
 imgs_path = save_path / 'all_images'
 train_path = save_path / 'training_images'
 test_path = save_path / 'testing_images'
@@ -36,6 +39,8 @@ capture = True
 def make_directories():
     if not os.path.exists(save_path):
         os.mkdir(save_path)
+    if not os.path.exists(dev_path):
+        os.mkdir(dev_path)
     if not os.path.exists(imgs_path):
         os.mkdir(imgs_path)
     if not os.path.exists(train_path):

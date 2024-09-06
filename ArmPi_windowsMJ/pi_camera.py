@@ -103,15 +103,15 @@ class PiCamera:
             print('Error in getting camera image:', e)
             time.sleep(0.01)
 
-    def take_image(self):
-        cv2.imwrite(str(cc.imgs_path / f'{self.saved_img_counter:04}.jpg'), self.frame)
+    def take_image(self, path=cc.imgs_path, c='any', i='demo'):
+        cv2.imwrite(str(path / f'{self.saved_img_counter:04}_{c}_{i}.jpg'), self.frame)
         self.captured_imgs.append(self.frame)
         self.saved_img_counter += 1
 
     def mouse_event(self, event, x, y, flags, param):
         # The mouse event is connected to the window pop-up and triggers the event when the user clicks on the image.
         if event == cv2.EVENT_LBUTTONDOWN:
-            self.take_image()
+            self.take_image(path=param[0], c=param[1], i=param[2])
             print("Image Captured")
 
 
