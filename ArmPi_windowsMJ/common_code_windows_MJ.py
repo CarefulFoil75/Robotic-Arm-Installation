@@ -13,7 +13,8 @@ import os
 import sys
 from pathlib import Path
 
-curr_dir = Path(os.getcwd())
+curr_dir = Path(os.path.abspath(os.path.dirname(__file__))) #abspath() returns the directory of the file
+#curr_dir = Path(os.getcwd()) #getcwd() returns the directory of the executor
 # curr_dir /= 'ArmPi_windowsMJ'
 
 # ----- File variables -----
