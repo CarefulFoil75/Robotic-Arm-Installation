@@ -34,6 +34,10 @@ if __name__ == '__main__':
 
     initials = input("Enter your initials: ")
     color = input("Enter the color of the block you are taking images of: ")
+    updated_img_ctr = input("Enter the camera counter index if you want to update it. If not, press 'Enter' to continue: ")
+
+    if updated_img_ctr == '' or int(updated_img_ctr) < 1:
+        updated_img_ctr = 1
 
     init_path = cc.dev_path / initials
     color_path = init_path / color
@@ -45,6 +49,7 @@ if __name__ == '__main__':
 
     # Create camera object
     my_camera = PiCamera(camera_index=1)
+    my_camera.saved_img_counter = int(updated_img_ctr)
 
     # Create image window and set mouse callback
     cv2.namedWindow(cc.window_name)
@@ -61,7 +66,9 @@ if __name__ == '__main__':
         if img is not None:
             cv2.imshow(cc.window_name, img)
             key = cv2.waitKey(1)
-            if key == 27:
+            if key == ord('c'):
+                my_camera.take_image(color_path, color, initials)
+            elif key == 27:
                 break
     my_camera.camera_close()
     cv2.destroyAllWindows()
