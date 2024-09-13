@@ -13,12 +13,9 @@ fashion_mnist = tf.keras.datasets.fashion_mnist
 
 class_names = ['green block', 'blue block', 'red block']
 
-train_images.shape(60000, 28, 28)
+train_images.shape(60000, 640, 480)
 
-len(train_labels)(60000)
-
-train_labels
-array
+len(train_labels)(10000)
 plt.figure()
 plt.imshow(train_images[0])
 plt.colorbar()
@@ -40,20 +37,20 @@ for i in range(25):
 plt.show
 
 model = tf.keras.Sequential([
-    tf.keras.layers.Flatten(input_shape=(28, 28)),
+    tf.keras.layers.Flatten(input_shape=(640, 480)),
     tf.keras.layers.Dense(128, activation='relu'),
     tf.keras.layers.Dense(10)
     ])
 
 model.compile(optimizer='adam', loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True), metrics=['accuracy'])
 
-mdoel.fit?
 model.fit(train_imags, train_labels, epochs=10)
 
 #accuracy
 test_loss, test_acc = model.evaluate(test_images, test_labels, verbose=2)
 
-print('\nTest accurarcy:' test_acc)
+print('\nTest accuracy:', test_acc)
+
 
 probability_model = tf.keras.Sequential([model, tf.keras.layers.Softmax()])
 
@@ -109,6 +106,9 @@ def plot_image(i, predictions_array, true_label, img):
     plt.figure(figsize=(2*2*num_cols, 2*num_rows))
     for i in range(num_images):
         plt.subplot(num_rows, 2*num_cols, 2*i+1)
-        plot_image(i, predictions
-    
+        plot_image(i, predictions[i], test_labels, test_images)
+        plt.subplot(num_rows, 2*num_cols, 2*i+2)
+    plot_value_array(i, predictions[i], test_labels)
+plt.tight_layout()
+plt.show()
           
