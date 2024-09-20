@@ -35,7 +35,7 @@ if __name__ == '__main__':
 
     # Create image window and set mouse callback
     cv2.namedWindow(cc.window_name)
-    cv2.setMouseCallback(cc.window_name, my_camera.mouse_event)
+    cv2.setMouseCallback(cc.window_name, my_camera.mouse_event) # Currently, this is set to capture images.
 
     # Open camera
     my_camera.camera_open()
