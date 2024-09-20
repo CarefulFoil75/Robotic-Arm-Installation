@@ -13,3 +13,10 @@ import tensorflow as tf
 import numpy as np
 import cv2
 import matplotlib.pyplot as plt
+
+class AIRobotNeuralNetwork:
+    def __init__(self):
+        pass
+
+if __name__ == '__main__':
+    pass
