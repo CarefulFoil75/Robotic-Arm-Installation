@@ -13,14 +13,16 @@ import os
 import sys
 import cv2
 import time
+import importlib
 import numpy as np
 # import threading
 
 import common_code_windows_MJ as cc
+sys.path.append(str(cc.curr_dir))
 from pi_camera import PiCamera
 
 # Append current working directory to file path so files in directory can easily be referenced.
-sys.path.append(str(cc.curr_dir))
+#sys.path.append(str(cc.curr_dir))
 
 # Check Python version.
 if sys.version_info.major == 2:
@@ -41,4 +43,4 @@ def take_image(folder_name, color, name = None):
     my_camera.mouse_event
     my_camera.camera_close()
 
-take_image("ed", "blue", "0_blue")
+#take_image("ed", "blue", "0_blue")

@@ -1,11 +1,13 @@
 import tkinter as tk
 import customtkinter as ctk
+import sys
 
-#from ArmPi_windowsMJ import common_code_windows_MJ as cc
-#from ArmPi_windowsMJ import take_images
+from ArmPi_windowsMJ import common_code_windows_MJ as cc
+sys.path.append(str(cc.curr_dir))
+from ArmPi_windowsMJ import take_images
 
 from Page1 import Page as Page1
-from Page2 import Page as Page2
+from Take_Picture_Page import Page as Take_Picture_Page
 
 ctk.set_appearance_mode("light")
 ctk.set_default_color_theme("green")
@@ -13,6 +15,7 @@ ctk.set_default_color_theme("green")
 class Main:
     def __init__(self):
         #Window Boilerplate
+        print(cc.dev_path)
 
         self.window = ctk.CTk()
         self.window.title("Grid")
@@ -32,13 +35,12 @@ class Main:
 
         self.pages = {}
 
-        for currentPage in (Page1, Page2):
+        for currentPage in (Page1, Take_Picture_Page):
             page = currentPage(self.window, self) #each page is a frame object, this initializes the page
             self.pages[str(page)] = page #adds page to list of pages
-            page.grid(column = 0, row = 0, sticky = "nsew") #places the page in cell (0, 0) and fills it to the boarders
+            page.grid(column = 0, row = 0, sticky = "nsew" ) #places the page in cell (0, 0) and fills it to the boarders
 
-
-        self.show_page("Page2") #This is the first page to display
+        self.show_page("Take_Picture_Page") #This is the first page to display
 
     def show_page(self, cont): #Allows for switching pages
         page = self.pages[str(cont)] #Allows for string name (toString) and object type to be passed

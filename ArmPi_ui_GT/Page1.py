@@ -14,7 +14,7 @@ class Page(ctk.CTkFrame):
 
         self.label1 = ctk.CTkLabel(self, font = ("Arial", 100), text_color = "black", text = "Welcome to the Robotic Arm \nAI Trainer")
         self.button1 = ctk.CTkButton(self, text = "Start", font = ("Arial", 100), text_color = "white", border_color =  "black", corner_radius = 100,
-							command = lambda : controller.show_page("Page2"))
+							command = lambda : controller.show_page("Take_Picture_Page"))
 
         self.label1.grid(row = 0, column = 0, sticky = "nsew", columnspan = 3)
         self.button1.grid(row = 2, column = 1, sticky = "nsew")
