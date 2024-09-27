@@ -13,9 +13,9 @@ fashion_mnist = tf.keras.datasets.fashion_mnist
 
 class_names = ['green block', 'blue block', 'red block']
 
-train_images.shape(60000, 640, 480)
+train_images = train_images.reshape((60000, 28, 28))
 
-len(train_labels)(10000)
+print(len(train_labels))  # Outputs: 60000
 plt.figure()
 plt.imshow(train_images[0])
 plt.colorbar()
@@ -34,7 +34,7 @@ for i in range(25):
     plt.grid(False)
     plt.imshow(train_images[i], cmap=plt.cm.binary)
     plt.xlabel(class_names[train_labels[i]])
-plt.show
+plt.show()
 
 model = tf.keras.Sequential([
     tf.keras.layers.Flatten(input_shape=(640, 480)),
@@ -44,7 +44,7 @@ model = tf.keras.Sequential([
 
 model.compile(optimizer='adam', loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True), metrics=['accuracy'])
 
-model.fit(train_imags, train_labels, epochs=10)
+model.fit(train_images, train_labels, epochs=10)
 
 #accuracy
 test_loss, test_acc = model.evaluate(test_images, test_labels, verbose=2)
@@ -63,7 +63,7 @@ test_labels[0]
 
 def plot_image(i, predictions_array, true_label, img):
     true_label, img = true_label[i], img[i]
-    plt.grid(false)
+    plt.grid(False)
     plt.xticks([])
     plt.yticks([])
     
@@ -94,7 +94,7 @@ def plot_image(i, predictions_array, true_label, img):
     i = 0
     plt.figure(figsize=(6,3))
     plt.subplot(1,2,1)
-    plot_image(i, prediction[i], test_labels, test_images)
+    plot_image(i, predictions[i], test_labels, test_images)
     plt.subplot(1,2,2)
     plot_value_array(i, predictions[i], test_labels)
     plt.show()
