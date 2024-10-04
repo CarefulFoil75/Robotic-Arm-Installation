@@ -103,7 +103,7 @@ class PiCamera:
             print('Error in getting camera image:', e)
             time.sleep(0.01)
 
-    def take_image(self, path=cc.imgs_path, c='any', i='demo'):
+    def take_image(self, path=cc.user_path, c='any', i='demo'):
         cv2.imwrite(str(path / f'{self.saved_img_counter:04}_{c}_{i}.jpg'), self.frame)
         self.captured_imgs.append(self.frame)
         self.saved_img_counter += 1
