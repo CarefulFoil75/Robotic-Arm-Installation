@@ -101,6 +101,7 @@ class AIRobotNeuralNetwork:
 
         self.labels = np.vstack(labels)
         self.dataset = np.stack(imgs)
+        self.dataset /= 255.0
 
     def create_train_test_sets(self, train_size=0.8, seed=None):
         """
