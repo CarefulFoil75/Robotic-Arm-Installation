@@ -23,6 +23,7 @@ import common_code_windows_MJ as cc
 
 def plot_image(i, predictions_array, true_label, class_dict, img):
     true_label, img = true_label[i][0], img[i]
+    img = (img * 255.0).astype(np.uint8)
     class_dict = list(class_dict.keys())
     plt.grid(False)
     plt.xticks([])
@@ -101,7 +102,7 @@ class AIRobotNeuralNetwork:
 
         self.labels = np.vstack(labels)
         self.dataset = np.stack(imgs)
-        self.dataset /= 255.0
+        self.dataset = self.dataset / 255.0
 
     def create_train_test_sets(self, train_size=0.8, seed=None):
         """
@@ -231,11 +232,12 @@ if __name__ == '__main__':
 
     dev_nn.test_model()
 
+    colors = list(dev_nn.block_dict.keys())
     predictions = dev_nn.make_predictions()
 
-    print("Prediction 0: ", predictions[0])
-    print("Arg: ", np.argmax(predictions[0]))
-    print("Class: ", dev_nn.test_labels[np.argmax(predictions[0])])
+    print("Prediction 0 Confidence: ", predictions[0])
+    print("Prediction: ", colors[np.argmax(predictions[0])])
+    print("Answer: ", colors[dev_nn.test_labels[0][0]])
 
     # i = 0
     # plt.figure(figsize=(16, 6))
