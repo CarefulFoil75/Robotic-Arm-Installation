@@ -1,0 +1,9 @@
+Making NN object: 0.0 seconds
+Loading data: 0.34282445907592773 seconds
+Creating train-test splits: 0.11717724800109863 seconds
+Saving data: 0.7243905067443848 seconds
+Making model: 0.6032192707061768 seconds
+Training model: 17.87751817703247 seconds
+Saving model: 22.01738667488098 seconds
+Testing model: 2.4754648208618164 seconds
+Predicting and printing samples: 5.066972255706787 seconds
